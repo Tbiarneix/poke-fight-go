@@ -1,0 +1,26 @@
+.poke-card img {
+  width: 75%;
+  object-fit: contain;
+
+  padding: 2vh;
+}
+
+.poke-types {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+
+.poke-types img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.types {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
