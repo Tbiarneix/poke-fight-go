@@ -24,3 +24,13 @@
   
   gap: 1em;
 }
+
+@media screen and (max-width: 600px) {
+  .pokemon-list {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 80%;
+  }
+}
