@@ -8,7 +8,7 @@ import { PokemonCard } from '../pokemonCard/PokemonCard'
 
 const Pokemons = () => {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([])
-  const [filteredPokemonList, setFilteredPokemonList] = useState<Pokemon[]>(pokemonList)
+  const [filteredPokemonList, setFilteredPokemonList] = useState<Pokemon[]>([])
 
   const fetchPokemons = async () => {
     try {
@@ -24,6 +24,10 @@ const Pokemons = () => {
   useEffect(() => {
     fetchPokemons()
   }, [])
+
+  useEffect(() => {
+    setFilteredPokemonList(pokemonList)
+  }, [pokemonList])
 
   const handleFilterChange = (e: any) => {
     const filterKeyword = e.target.value.toLowerCase()
@@ -41,21 +45,13 @@ const Pokemons = () => {
         <input type="text" placeholder="Search a pokemon" onChange={handleFilterChange} />
       </div>
       <div className="pokemon-list">
-        {filteredPokemonList
-          ? filteredPokemonList.map((pokemon: Pokemon) => {
-              return (
-                <div className="card" key={pokemon.pokedexId}>
-                  <PokemonCard {...pokemon} />
-                </div>
-              )
-            })
-          : pokemonList.map((pokemon: Pokemon) => {
-              return (
-                <div className="card" key={pokemon.pokedexId}>
-                  <PokemonCard {...pokemon} />
-                </div>
-              )
-            })}
+        {filteredPokemonList.map((pokemon: Pokemon) => {
+          return (
+            <div className="card" key={pokemon.pokedexId}>
+              <PokemonCard {...pokemon} />
+            </div>
+          )
+        })}
       </div>
     </div>
   )
